@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Favourite Cartoon ❤️</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(circle at top left, #fd027b, transparent 35%),
+        radial-gradient(circle at bottom right, #fcfcfc, transparent 40%),
+        linear-gradient(135deg, #fafafb, #f836b1, #fdfdfd);
+
+    color: white;
+}
+
+/* ---------- FLOATING HEARTS ---------- */
+
+.heart {
+    position: fixed;
+    bottom: -30px;
+    font-size: 22px;
+    animation: floatHeart 7s linear infinite;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+.heart:nth-child(1) { left: 8%; animation-delay: 0s; }
+.heart:nth-child(2) { left: 20%; animation-delay: 2s; }
+.heart:nth-child(3) { left: 40%; animation-delay: 4s; }
+.heart:nth-child(4) { left: 65%; animation-delay: 1s; }
+.heart:nth-child(5) { left: 82%; animation-delay: 3s; }
+
+@keyframes floatHeart {
+
+    0% {
+        transform: translateY(0) scale(0.7) rotate(0deg);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-110vh) scale(1.5) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* ---------- MAIN ---------- */
+
+.container {
+    min-height: 100vh;
+    text-align: center;
+    padding: 50px 15px;
+}
+
+/* ---------- TITLE ---------- */
+
+.small-title {
+    font-size: 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #450514;
+    margin-bottom: 10px;
+}
+
+h1 {
+    margin: 0;
+
+    font-size: clamp(35px, 7vw, 70px);
+
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #ffb6da,
+        #ffd6ec,
+        #ffffff
+    );
+
+    -webkit-background-clip: text;
+    color: transparent;
+
+    text-shadow: 0 0 25px rgba(255, 150, 210, 0.5);
+}
+
+.subtitle {
+    font-size: 20px;
+    color:  #450514;
+    margin-top: 12px;
+}
+
+/* ---------- GALLERY ---------- */
+
+.gallery-area {
+    width: 100%;
+    max-width: 1100px;
+    margin: 50px auto 20px;
+    perspective: 1200px;
+}
+
+.gallery {
+    position: relative;
+
+    width: 100%;
+    height: 430px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transform-style: preserve-3d;
+}
+
+/* ---------- CARDS ---------- */
+
+.card {
+    position: absolute;
+
+    width: 260px;
+    height: 350px;
+
+    border-radius: 25px;
+
+    overflow: hidden;
+
+    background: rgba(255,255,255,0.12);
+
+    border: 1px solid rgba(255,255,255,0.3);
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.5),
+        0 0 25px rgba(255,100,190,0.15);
+
+    backdrop-filter: blur(10px);
+
+    transition:
+        transform 0.7s ease,
+        opacity 0.7s ease,
+        filter 0.7s ease;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.card .caption {
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    padding: 35px 15px 15px;
+
+    background:
+        linear-gradient(
+            transparent,
+            rgba(0,0,0,0.9)
+        );
+
+    font-size: 17px;
+}
+
+/* ---------- VIDEO CARD ---------- */
+
+.video-card {
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff77b7,
+            #7b5cff
+        );
+}
+
+.play {
+    width: 80px;
+    height: 80px;
+
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(255,255,255,0.25);
+
+    font-size: 35px;
+
+    margin-bottom: 15px;
+
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+
+    50% {
+        transform: scale(1.15);
+        box-shadow: 0 0 35px rgba(255,255,255,0.5);
+    }
+}
+
+/* ---------- CONTROLS ---------- */
+
+.controls {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 15px;
+
+    margin-top: 15px;
+}
+
+button {
+    border: none;
+
+    padding: 12px 22px;
+
+    border-radius: 30px;
+
+    background: rgba(255,255,255,0.15);
+
+    color: white;
+
+    border: 1px solid rgba(255,255,255,0.3);
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.08);
+
+    background: rgba(255,255,255,0.3);
+
+    box-shadow:
+        0 0 20px rgba(255,150,220,0.5);
+}
+
+/* ---------- MESSAGE ---------- */
+
+.message-box {
+    max-width: 650px;
+
+    margin: 50px auto;
+
+    padding: 30px;
+
+    border-radius: 25px;
+
+    background: rgba(255,255,255,0.09);
+
+    border: 1px solid rgba(255,255,255,0.2);
+
+    backdrop-filter: blur(12px);
+
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+.message-box h2 {
+    margin-top: 0;
+
+    color:  #450514;
+}
+
+.message-box p {
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    color:  #450514;
+}
+
+/* ---------- SECRET BUTTON ---------- */
+
+.secret-button {
+    background: linear-gradient(
+        135deg,
+        #ff4fa3,
+        #9b5cff
+    );
+
+    padding: 15px 28px;
+
+    font-size: 17px;
+
+    margin-top: 10px;
+}
+
+.secret {
+    display: none;
+
+    margin-top: 20px;
+
+    font-size: 20px;
+
+    color:  #450514;
+
+    animation: appear 0.7s ease;
+}
+
+@keyframes appear {
+
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---------- PREVIEW BUTTON ---------- */
+
+.preview-button {
+    position: fixed;
+
+    top: 18px;
+    right: 18px;
+
+    z-index: 1000;
+
+    background: rgba(255,255,255,0.2);
+
+    backdrop-filter: blur(10px);
+}
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 600px) {
+
+    .container {
+        padding-top: 70px;
+    }
+
+    .gallery {
+        height: 390px;
+    }
+
+    .card {
+        width: 220px;
+        height: 310px;
+    }
+
+    .message-box {
+        margin-top: 30px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- FLOATING HEARTS -->
+
+<div class="heart">❤️</div>
+<div class="heart">💕</div>
+<div class="heart">💗</div>
+<div class="heart">💖</div>
+<div class="heart">💘</div>
+
+
+
+<div class="container">
+
+    <div class="small-title">
+        Just something random...
+    </div>
+
+
+    <h1>
+        My Favourite Cartoon ❤️
+    </h1>
+
+
+    <div class="subtitle">
+        I could watch this all day… 😌
+    </div>
+
+
+    <!-- GALLERY -->
+
+    <div class="gallery-area">
+
+        <div class="gallery" id="gallery">
+
+
+            <!-- CARD 1 -->
+
+            <div class="card">
+
+                <img src="https://pbs.twimg.com/media/FeS_7JZVsAAqwFa.jpg">
+
+                <div class="caption">
+                    Okay... this one is cute 😌
+                </div>
+
+            </div>
+
+
+            <!-- CARD 2 -->
+
+            <div class="card">
+
+                <img src="https://stat.ameba.jp/user_images/20160726/03/a-a-agallery/56/0f/j/o0800082813706846679.jpg">
+
+                <div class="caption">
+                    Definitely not watching this again 👀
+                </div>
+
+            </div>
+
+
+            <!-- CARD 3 -->
+
+            <div class="card">
+
+                <img src="https://www.koukalek.cz/www/ir/actor-images/vila-amalka-1667--mm1024x768.jpg">
+
+                <div class="caption">
+                    Okay... maybe one more time 😂
+                </div>
+
+            </div>
+
+
+            <!-- CARD 4 -->
+
+            <div class="card">
+
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5HfD-yV-qBIy-ahj8k3CzTpQ1HhT-ENk00RPMWM936dIjLwv7nAL8eDdn&s=10">
+
+                <div class="caption">
+                    Very serious cartoon research 😌
+                </div>
+
+            </div>
+
+
+            <!-- CARD 5 -->
+
+            <div class="card">
+
+                <img src="https://pbs.twimg.com/media/FeS_7JZVsAAqwFa.jpg">
+
+                <div class="caption">
+                    Don't judge me 😂
+                </div>
+
+            </div>
+
+
+            <!-- CARD 6 -->
+
+            <div class="card">
+
+                <img src="https://stat.ameba.jp/user_images/20160726/03/a-a-agallery/56/0f/j/o0800082813706846679.jpg">
+
+                <div class="caption">
+                    Totally normal behaviour 😭
+                </div>
+
+            </div>
+
+
+            <!-- CARD 7 -->
+
+            <div class="card">
+
+                <img src="https://www.koukalek.cz/www/ir/actor-images/vila-amalka-1667--mm1024x768.jpg">
+
+                <div class="caption">
+                    Favourite for absolutely no reason 😏
+                </div>
+
+            </div>
+
+
+            <!-- CARD 8 -->
+
+            <div class="card">
+
+                <img src="https://i.pinimg.com/736x/75/50/bd/7550bd3ea0e556856aacff7fcbbb5013.jpg">
+
+                <div class="caption">
+                    I swear I'm not obsessed 😂
+                </div>
+
+            </div>
+
+
+            <!-- CARD 9 -->
+
+            <div class="card">
+
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR92GexY-ca5sHOV8oXkS1i4DybOe2qS_gXFFJSyi4NL7VyS9TumYq2Xe8w&s=10">
+
+                <div class="caption">
+                    Last one... probably 😌
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- CONTROLS -->
+
+        <div class="controls">
+
+            <button onclick="previousCard()">
+                ◀
+            </button>
+
+            <button onclick="toggleAuto()">
+                ⏯ Auto
+            </button>
+
+            <button onclick="nextCard()">
+                ▶
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- MAIN MESSAGE -->
+
+    <div class="message-box">
+
+        <h2>
+            So... apparently this is my favourite cartoon 😂
+        </h2>
+
+        <p>
+            I don't know why I like watching it so much...
+            but somehow I keep coming back to it. 😌
+        </p>
+
+        <button
+            class="secret-button"
+            onclick="showSecret()">
+
+            Don't click this 👀
+        </button>
+
+
+        <div
+            class="secret"
+            id="secret">
+
+            Okay fine 😂❤️
+
+            <br><br>
+
+            Maybe I just wanted an excuse to send you this. 😏
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<script>
+
+/* =========================================
+   3D GALLERY
+========================================= */
+
+const cards =
+    document.querySelectorAll(".card");
+
+let current = 0;
+
+let autoPlay = true;
+
+let timer;
+
+
+function updateGallery() {
+
+    const total = cards.length;
+
+    cards.forEach((card, index) => {
+
+        let position =
+            (index - current + total) % total;
+
+        /*
+            position 0 = center
+            position 1 = right
+            position 2 = far right
+            position 9 = left
+            position 8 = far left
+        */
+
+        if (position === 0) {
+
+            card.style.transform =
+                "translateX(0) translateZ(250px) rotateY(0deg) scale(1)";
+
+            card.style.opacity = "1";
+
+            card.style.zIndex = "10";
+
+            card.style.filter = "none";
+
+        }
+
+        else if (position === 1) {
+
+            card.style.transform =
+                "translateX(260px) translateZ(50px) rotateY(-35deg) scale(0.85)";
+
+            card.style.opacity = "0.8";
+
+            card.style.zIndex = "8";
+
+            card.style.filter = "brightness(0.8)";
+
+        }
+
+        else if (position === 2) {
+
+            card.style.transform =
+                "translateX(430px) translateZ(-100px) rotateY(-50deg) scale(0.7)";
+
+            card.style.opacity = "0.45";
+
+            card.style.zIndex = "6";
+
+            card.style.filter = "brightness(0.6)";
+
+        }
+
+        else if (position === total - 1) {
+
+            card.style.transform =
+                "translateX(-260px) translateZ(50px) rotateY(35deg) scale(0.85)";
+
+            card.style.opacity = "0.8";
+
+            card.style.zIndex = "8";
+
+            card.style.filter = "brightness(0.8)";
+
+        }
+
+        else if (position === total - 2) {
+
+            card.style.transform =
+                "translateX(-430px) translateZ(-100px) rotateY(50deg) scale(0.7)";
+
+            card.style.opacity = "0.45";
+
+            card.style.zIndex = "6";
+
+            card.style.filter = "brightness(0.6)";
+
+        }
+
+        else {
+
+            card.style.transform =
+                "translateX(0) translateZ(-300px) scale(0.4)";
+
+            card.style.opacity = "0";
+
+            card.style.zIndex = "1";
+
+        }
+
+    });
+
+}
+
+
+/* NEXT */
+
+function nextCard() {
+
+    current++;
+
+    if (current >= cards.length) {
+        current = 0;
+    }
+
+    updateGallery();
+
+}
+
+
+/* PREVIOUS */
+
+function previousCard() {
+
+    current--;
+
+    if (current < 0) {
+        current = cards.length - 1;
+    }
+
+    updateGallery();
+
+}
+
+
+/* AUTO ROTATION */
+
+function startAuto() {
+
+    timer = setInterval(
+        nextCard,
+        3500
+    );
+
+}
+
+
+function stopAuto() {
+
+    clearInterval(timer);
+
+}
+
+
+function toggleAuto() {
+
+    if (autoPlay) {
+
+        stopAuto();
+
+        autoPlay = false;
+
+    }
+
+    else {
+
+        startAuto();
+
+        autoPlay = true;
+
+    }
+
+}
+
+
+/* SECRET MESSAGE */
+
+function showSecret() {
+
+    const secret =
+        document.getElementById("secret");
+
+    secret.style.display = "block";
+
+}
+
+
+/* PREVIEW BUTTON */
+
+function previewPage() {
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* START */
+
+updateGallery();
+
+startAuto();
+
+</script>
+
+
+</body>
+</html>
